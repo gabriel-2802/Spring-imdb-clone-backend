@@ -1,11 +1,9 @@
 package imdb.app.demo.services;
 
-import imdb.app.demo.entities.AppUser;
-import imdb.app.demo.entities.LoginRequest;
-import imdb.app.demo.entities.RegisterRequest;
-import imdb.app.demo.entities.Role;
+import imdb.app.demo.entities.*;
 import imdb.app.demo.repos.AppUserRepository;
 import imdb.app.demo.repos.RoleRepository;
+import imdb.app.demo.security.JwtGenerator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,6 +23,8 @@ public class AppUserService {
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
     private final AuthenticationManager authenticationManager;
+    private final JwtGenerator jwtGenerator;
+
     public ResponseEntity<String> register(RegisterRequest registerRequest) {
         if (appUserRepository.existsAppUserByUsername(registerRequest.getUsername())) {
             return ResponseEntity.badRequest().body("Error: Username is already taken!");
@@ -43,13 +43,15 @@ public class AppUserService {
         return ResponseEntity.ok("User registered successfully!");
     }
 
-    public ResponseEntity<String> login(LoginRequest loginRequest) {
+    public ResponseEntity<AuthResponse> login(LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+                new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
+                        loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
+        String token = jwtGenerator.generateToken(authentication);
 
-        return ResponseEntity.ok("User logged in successfully!");
+        return ResponseEntity.ok(new AuthResponse(token));
 
     }
 }

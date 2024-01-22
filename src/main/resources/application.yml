@@ -6,7 +6,8 @@ spring:
     password: 2828
   jpa:
     hibernate:
-      ddl-auto: update
+      # we reset it
+      ddl-auto: create
     database-platform: org.hibernate.dialect.H2Dialect
   h2:
     console:
