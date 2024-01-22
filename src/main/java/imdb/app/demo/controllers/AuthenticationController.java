@@ -1,17 +1,12 @@
 package imdb.app.demo.controllers;
 
-import imdb.app.demo.entities.AuthResponse;
-import imdb.app.demo.entities.LoginRequest;
-import imdb.app.demo.entities.RegisterRequest;
-import imdb.app.demo.repos.AppUserRepository;
-import imdb.app.demo.repos.RoleRepository;
-import imdb.app.demo.security.JwtGenerator;
-import imdb.app.demo.services.AppUserService;
-import imdb.app.demo.services.RoleService;
+import imdb.app.demo.entities.request_response.AdminRequest;
+import imdb.app.demo.entities.request_response.AuthResponse;
+import imdb.app.demo.entities.request_response.LoginRequest;
+import imdb.app.demo.entities.request_response.RegisterRequest;
+import imdb.app.demo.services.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,11 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AuthenticationController {
 
-    private final AuthenticationManager authenticationManager;
-    private final AppUserService appUserService;
-    private final RoleService roleService;
-    private final PasswordEncoder passwordEncoder;
-    private final JwtGenerator jwtGenerator;
+    private final AuthenticationService appUserService;
 
     @GetMapping()
     public String hello() {
@@ -38,5 +29,10 @@ public class AuthenticationController {
     @PostMapping("login")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest loginRequest) {
         return appUserService.login(loginRequest);
+    }
+
+    @PostMapping("register/admin")
+    public ResponseEntity<String> registerAdmin(@RequestBody AdminRequest adminRequest) {
+        return appUserService.registerAdmin(adminRequest);
     }
 }

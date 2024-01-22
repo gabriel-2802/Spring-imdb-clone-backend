@@ -1,6 +1,7 @@
 package imdb.app.demo;
 
 import imdb.app.demo.entities.AppUser;
+import imdb.app.demo.entities.Authority;
 import imdb.app.demo.entities.Role;
 import imdb.app.demo.repos.AppUserRepository;
 import imdb.app.demo.repos.RoleRepository;
@@ -26,11 +27,9 @@ public class DemoApplication {
 			if (roleRepo.findByAuthority("ADMIN").isPresent()) {
 				return;
 			}
-
-			roleRepo.save(new Role("USER"));
-			roleRepo.save(new Role("ADMIN"));
-
-
+			roleRepo.save(new Role(Authority.USER.toString()));
+			roleRepo.save(new Role(Authority.ADMIN.toString()));
+			roleRepo.save(new Role(Authority.CRITIC.toString()));
 		};
 	}
 
