@@ -28,4 +28,7 @@ public class AppUser {
             inverseJoinColumns = @JoinColumn(name="role_id")
     )
     private Set<Role> roles;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews;
 }
