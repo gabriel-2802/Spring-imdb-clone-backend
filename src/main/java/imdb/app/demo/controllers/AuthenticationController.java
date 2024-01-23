@@ -4,7 +4,7 @@ import imdb.app.demo.entities.request_response.AdminRequest;
 import imdb.app.demo.entities.request_response.AuthResponse;
 import imdb.app.demo.entities.request_response.LoginRequest;
 import imdb.app.demo.entities.request_response.RegisterRequest;
-import imdb.app.demo.services.AuthenticationService;
+import imdb.app.demo.services.interfaces.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -8,6 +8,7 @@ import imdb.app.demo.entities.request_response.RegisterRequest;
 import imdb.app.demo.repos.AppUserRepository;
 import imdb.app.demo.repos.RoleRepository;
 import imdb.app.demo.security.JwtGenerator;
+import imdb.app.demo.services.interfaces.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

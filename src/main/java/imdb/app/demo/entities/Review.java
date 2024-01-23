@@ -1,5 +1,6 @@
 package imdb.app.demo.entities;
 
+import imdb.app.demo.entities.entries.Production;
 import jakarta.persistence.*;
 import lombok.Data;
 

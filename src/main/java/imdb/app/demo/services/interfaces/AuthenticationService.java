@@ -1,4 +1,4 @@
-package imdb.app.demo.services;
+package imdb.app.demo.services.interfaces;
 
 import imdb.app.demo.entities.request_response.AdminRequest;
 import imdb.app.demo.entities.request_response.AuthResponse;

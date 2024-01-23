@@ -1,5 +1,6 @@
-package imdb.app.demo.entities;
+package imdb.app.demo.entities.entries;
 
+import imdb.app.demo.entities.Review;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -11,22 +12,22 @@ import java.util.List;
 public abstract class Production {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    protected Integer id;
 
-    private String title;
-    private String description;
+    protected String title;
+    protected String description;
     @ElementCollection
-    private List<String> actors;
+    protected List<String> actors;
     @ElementCollection
-    private List<String> genres;
+    protected List<String> genres;
     @ElementCollection
-    private List<String> directors;
-    private int duration;
-    private int releaseYear;
+    protected List<String> directors;
+    protected int duration;
+    protected int releaseYear;
 
-    private float rating;
+    protected float rating;
     @OneToMany(mappedBy = "production", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Review> reviews;
+    protected List<Review> reviews;
     public abstract ProductionTypes getType();
     public void updateRating() {
         float sum = 0;

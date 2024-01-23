@@ -1,4 +1,4 @@
-package imdb.app.demo.entities;
+package imdb.app.demo.entities.entries;
 
 public enum ProductionTypes {
     MOVIE,

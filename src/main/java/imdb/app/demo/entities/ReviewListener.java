@@ -1,7 +1,8 @@
 package imdb.app.demo.entities;
 
 import imdb.app.demo.context.ApplicationContextProvider;
-import imdb.app.demo.services.ProductionService;
+import imdb.app.demo.entities.entries.Production;
+import imdb.app.demo.services.interfaces.ProductionService;
 import jakarta.persistence.PostPersist;
 import jakarta.persistence.PostRemove;
 import jakarta.persistence.PostUpdate;
