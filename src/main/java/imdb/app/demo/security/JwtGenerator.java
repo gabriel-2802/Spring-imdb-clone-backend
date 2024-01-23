@@ -1,12 +1,15 @@
 package imdb.app.demo.security;
 
+import imdb.app.demo.security.Constants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Date;
+import java.util.stream.Collectors;
 
 @Component
 public class JwtGenerator {
@@ -15,8 +18,14 @@ public class JwtGenerator {
         Date now = new Date(System.currentTimeMillis());
         Date expire = new Date(now.getTime() + Constants.JWT_EXPIRATION);
 
+        // Extract roles from the authentication object
+        String roles = authentication.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.joining(","));
+
         return Jwts.builder()
                 .setSubject(username)
+                .claim("roles", roles) // Include roles in the token
                 .setIssuedAt(now)
                 .setExpiration(expire)
                 .signWith(Constants.key, SignatureAlgorithm.HS512)

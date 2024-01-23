@@ -16,11 +16,6 @@ public class AuthenticationController {
 
     private final AuthenticationService appUserService;
 
-    @GetMapping()
-    public String hello() {
-        return "Hello from AuthenticationController";
-    }
-
     @PostMapping("register")
     public ResponseEntity<String> register(@RequestBody RegisterRequest registerRequest) {
         return appUserService.register(registerRequest);
@@ -31,7 +26,7 @@ public class AuthenticationController {
         return appUserService.login(loginRequest);
     }
 
-    @PostMapping("register/admin")
+    @PostMapping("register-admin")
     public ResponseEntity<String> registerAdmin(@RequestBody AdminRequest adminRequest) {
         return appUserService.registerAdmin(adminRequest);
     }

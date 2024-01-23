@@ -10,12 +10,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -29,8 +25,6 @@ public class SecurityConfig {
     private final CustomUserDetailService userDetailsService;
     private final JwtAuthEntryPoint jwtAuthEntryPoint;
 
-
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -38,8 +32,9 @@ public class SecurityConfig {
                 .sessionManagement(sessionManagement ->
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.GET).permitAll()
                         .requestMatchers("/imdb/auth/**").permitAll()
+                        .requestMatchers("/imdb/admin/**").hasAuthority("ADMIN") // Only ADMIN can access /imdb/admin/**
+                        .requestMatchers(HttpMethod.GET, "/imdb/content/**").permitAll()
                         .anyRequest().authenticated())
                 .httpBasic(withDefaults())
                 .exceptionHandling(exceptionHandling ->
