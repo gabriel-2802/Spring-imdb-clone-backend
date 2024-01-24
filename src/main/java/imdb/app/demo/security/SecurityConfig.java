@@ -34,6 +34,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/imdb/auth/**").permitAll()
                         .requestMatchers("/imdb/admin/**").hasAuthority("ADMIN") // Only ADMIN can access /imdb/admin/**
+                        .requestMatchers("/imdb/users/**").hasAuthority("USER") // Only USER can access /imdb/users/**
                         .requestMatchers(HttpMethod.GET, "/imdb/content/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/imdb/content/**").hasAuthority("USER") // Only USER can access /imdb/content/**
                         .anyRequest().authenticated())

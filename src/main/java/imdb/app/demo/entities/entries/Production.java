@@ -1,5 +1,7 @@
 package imdb.app.demo.entities.entries;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import imdb.app.demo.entities.Review;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -13,7 +15,7 @@ public abstract class Production {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
-
+    @Column
     protected String title;
     protected String description;
     @ElementCollection
@@ -23,8 +25,9 @@ public abstract class Production {
     @ElementCollection
     protected List<String> directors;
     protected int duration;
+    @Column
     protected int releaseYear;
-
+    @Column
     protected float rating;
     @OneToMany(mappedBy = "production", cascade = CascadeType.ALL, orphanRemoval = true)
     protected List<Review> reviews;

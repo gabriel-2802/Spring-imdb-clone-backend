@@ -17,6 +17,9 @@ public class ReviewListener {
         ProductionService productionService = context.getBean(ProductionService.class);
 
         Production production = review.getProduction();
+        if (production == null) {
+            return;
+        }
         productionService.updateProductionRating(production);
     }
 }
