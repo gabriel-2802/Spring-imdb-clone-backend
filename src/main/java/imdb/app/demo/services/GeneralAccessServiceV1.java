@@ -2,6 +2,7 @@ package imdb.app.demo.services;
 
 import imdb.app.demo.entities.Review;
 import imdb.app.demo.entities.entries.Production;
+import imdb.app.demo.entities.request_response.SearchRequest;
 import imdb.app.demo.repos.MovieRepository;
 import imdb.app.demo.repos.ProductionRepository;
 import imdb.app.demo.services.interfaces.GeneralAccessService;
@@ -50,5 +51,30 @@ public class GeneralAccessServiceV1 implements GeneralAccessService {
 
         Production production = productionEntry.get();
         return ResponseEntity.ok(production.getReviews());
+    }
+
+    @Override
+    public ResponseEntity<List<Production>> search(SearchRequest query) {
+        List<Production> productions = productionRepository.findAll().stream().filter(production -> {
+            if (query.getTitle() != null && !production.getTitle().contains(query.getTitle())) {
+                return false;
+            }
+
+            if (query.getYear() != 0 && production.getReleaseYear() != query.getYear()) {
+                return false;
+            }
+
+            if (query.getGenres() != null && !query.getGenres().isEmpty() && !production.getGenres().contains(query.getGenres())) {
+                return false;
+            }
+
+            if (query.getRating() != 0 && production.getRating() < query.getRating()) {
+                return false;
+            }
+
+            return true;
+        }).limit(MAX_RESULTS).toList();
+
+        return ResponseEntity.ok(productions);
     }
 }

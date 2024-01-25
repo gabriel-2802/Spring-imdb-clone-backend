@@ -18,5 +18,3 @@
 
 ## To Be Added
 * a search bar for the movie database
-* a movie recommendation system
-* home page - movie recommendations

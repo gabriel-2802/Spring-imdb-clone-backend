@@ -85,8 +85,6 @@ public class UserController {
         String token = getToken(request);
         String username = jwtGenerator.getUsernameFromToken(token);
         return userService.viewHome(username);
-
     }
-
 
 }

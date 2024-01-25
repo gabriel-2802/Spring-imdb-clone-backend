@@ -1,6 +1,7 @@
 package imdb.app.demo.repos;
 
 import imdb.app.demo.entities.entries.Production;
+import imdb.app.demo.entities.entries.ProductionTypes;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -19,4 +20,5 @@ public interface ProductionRepository extends JpaRepository<Production, Integer>
 
     @Query("SELECT p FROM Production p ORDER BY p.releaseYear DESC")
     List<Production> findLatest();
+
 }
