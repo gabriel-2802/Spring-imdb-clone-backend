@@ -1,6 +1,7 @@
 package imdb.app.demo.controllers;
 
 import imdb.app.demo.entities.AppUser;
+import imdb.app.demo.entities.Review;
 import imdb.app.demo.entities.ReviewRequest;
 import imdb.app.demo.security.JwtGenerator;
 import imdb.app.demo.services.interfaces.UserService;
@@ -8,6 +9,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -42,6 +45,18 @@ public class UserController {
         String token = getToken(request);
         String username = jwtGenerator.getUsernameFromToken(token);
         return userService.addMovieReview(id, review, username);
+    }
+
+    @DeleteMapping("/delete-review/{id}")
+    public ResponseEntity<String> deleteReview(@PathVariable Integer id) {
+        return userService.deleteReview(id);
+    }
+
+    @GetMapping("/reviews")
+    public ResponseEntity<List<Review>> getReviews(HttpServletRequest request) {
+        String token = getToken(request);
+        String username = jwtGenerator.getUsernameFromToken(token);
+        return userService.getReviews(username);
     }
 
 

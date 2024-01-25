@@ -17,4 +17,6 @@ public interface AdminService {
     ResponseEntity<String> deleteMovie(Integer id);
 
     ResponseEntity<String> updateMovie(Integer id, MovieRequest production);
+
+    ResponseEntity<String> deleteUser(Integer id);
 }

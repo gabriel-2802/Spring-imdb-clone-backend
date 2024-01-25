@@ -1,8 +1,6 @@
 package imdb.app.demo.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import imdb.app.demo.entities.entries.Production;
 import jakarta.persistence.*;
@@ -32,6 +30,9 @@ public class Review {
     @JoinColumn(name = "user_id")
     @JsonIgnore
     private AppUser user;
+    @JsonIgnore
+    @Column(nullable = true)
+    private Integer prodId;
 
     public Review() {
     }
@@ -42,6 +43,7 @@ public class Review {
         this.rating = rating;
         this.production = production;
         this.user = user;
+        prodId = production.getId();
     }
 
     @JsonProperty("reviewer")

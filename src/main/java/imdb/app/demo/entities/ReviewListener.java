@@ -1,7 +1,6 @@
 package imdb.app.demo.entities;
 
 import imdb.app.demo.context.ApplicationContextProvider;
-import imdb.app.demo.entities.entries.Production;
 import imdb.app.demo.services.interfaces.ProductionService;
 import jakarta.persistence.PostPersist;
 import jakarta.persistence.PostRemove;
@@ -16,10 +15,8 @@ public class ReviewListener {
         ApplicationContext context = ApplicationContextProvider.getContext();
         ProductionService productionService = context.getBean(ProductionService.class);
 
-        Production production = review.getProduction();
-        if (production == null) {
-            return;
-        }
-        productionService.updateProductionRating(production);
+        Integer productionId = review.getProdId();
+        System.out.println(productionId);
+        productionService.updateProductionRating(productionId);
     }
 }

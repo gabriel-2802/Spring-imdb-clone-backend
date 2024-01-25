@@ -85,4 +85,9 @@ public class AdminServiceV1 implements AdminService {
         return ResponseEntity.ok("Movie updated successfully");
 
     }
+
+    @Override
+    public ResponseEntity<String> deleteUser(Integer id) {
+        return null;
+    }
 }

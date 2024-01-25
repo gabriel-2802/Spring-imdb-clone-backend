@@ -42,4 +42,5 @@ public class AdminController {
     public ResponseEntity<String> updateMovie(@PathVariable Integer id, @RequestBody MovieRequest production) {
         return adminService.updateMovie(id, production);
     }
+
 }

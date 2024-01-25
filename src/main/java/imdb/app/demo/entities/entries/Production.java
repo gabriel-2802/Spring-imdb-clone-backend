@@ -6,7 +6,9 @@ import imdb.app.demo.entities.Review;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -33,10 +35,13 @@ public abstract class Production {
     protected List<Review> reviews;
     public abstract ProductionTypes getType();
     public void updateRating() {
-        float sum = 0;
-        for (Review review : reviews) {
-            sum += review.getRating();
+        float sum = 0;;
+        try {
+            rating = reviews.stream().reduce(sum, (acc, review) -> acc + review.getRating(), Float::sum)
+                    / reviews.size();
+        } catch (Exception e) {
+            rating = 0;
+            reviews = new ArrayList<>();
         }
-        rating = sum / reviews.size();
     }
 }
