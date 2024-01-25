@@ -1,9 +1,12 @@
-package imdb.app.demo.entities;
+package imdb.app.demo.entities.users;
 
+import imdb.app.demo.entities.Review;
+import imdb.app.demo.entities.WatchListItem;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import lombok.ToString;
 
 import java.util.HashSet;
 import java.util.List;
@@ -31,4 +34,9 @@ public class AppUser {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Review> reviews;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<WatchListItem> watchListItems = new HashSet<>();
 }

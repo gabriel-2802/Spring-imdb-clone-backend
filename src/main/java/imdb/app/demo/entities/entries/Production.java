@@ -3,11 +3,16 @@ package imdb.app.demo.entities.entries;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import imdb.app.demo.entities.Review;
+import imdb.app.demo.entities.WatchListItem;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
@@ -44,4 +49,10 @@ public abstract class Production {
             reviews = new ArrayList<>();
         }
     }
+
+    @OneToMany(mappedBy = "production", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<WatchListItem> watchListItems = new HashSet<>();
 }

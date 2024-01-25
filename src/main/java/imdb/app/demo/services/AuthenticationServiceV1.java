@@ -1,10 +1,12 @@
 package imdb.app.demo.services;
 
-import imdb.app.demo.entities.*;
 import imdb.app.demo.entities.request_response.AdminRequest;
 import imdb.app.demo.entities.request_response.AuthResponse;
 import imdb.app.demo.entities.request_response.LoginRequest;
 import imdb.app.demo.entities.request_response.RegisterRequest;
+import imdb.app.demo.entities.users.AppUser;
+import imdb.app.demo.entities.users.Authority;
+import imdb.app.demo.entities.users.Role;
 import imdb.app.demo.repos.AppUserRepository;
 import imdb.app.demo.repos.RoleRepository;
 import imdb.app.demo.security.JwtGenerator;

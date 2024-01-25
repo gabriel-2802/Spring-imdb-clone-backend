@@ -1,6 +1,6 @@
 package imdb.app.demo.services.interfaces;
 
-import imdb.app.demo.entities.AppUser;
+import imdb.app.demo.entities.users.AppUser;
 import imdb.app.demo.entities.entries.Production;
 import imdb.app.demo.entities.request_response.MovieRequest;
 import org.springframework.http.ResponseEntity;

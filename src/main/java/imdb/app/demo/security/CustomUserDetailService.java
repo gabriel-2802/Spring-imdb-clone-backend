@@ -1,6 +1,6 @@
 package imdb.app.demo.security;
 
-import imdb.app.demo.entities.AppUser;
+import imdb.app.demo.entities.users.AppUser;
 import imdb.app.demo.repos.AppUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

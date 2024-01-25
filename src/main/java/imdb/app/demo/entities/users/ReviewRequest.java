@@ -1,4 +1,4 @@
-package imdb.app.demo.entities;
+package imdb.app.demo.entities.users;
 
 import lombok.Data;
 

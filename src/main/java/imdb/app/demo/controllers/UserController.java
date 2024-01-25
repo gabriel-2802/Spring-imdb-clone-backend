@@ -1,8 +1,10 @@
 package imdb.app.demo.controllers;
 
-import imdb.app.demo.entities.AppUser;
+import imdb.app.demo.entities.WatchListItem;
+import imdb.app.demo.entities.entries.Production;
+import imdb.app.demo.entities.users.AppUser;
 import imdb.app.demo.entities.Review;
-import imdb.app.demo.entities.ReviewRequest;
+import imdb.app.demo.entities.users.ReviewRequest;
 import imdb.app.demo.security.JwtGenerator;
 import imdb.app.demo.services.interfaces.UserService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -62,6 +64,25 @@ public class UserController {
     @PutMapping("/update-review/{id}")
     public ResponseEntity<String> updateReview(@PathVariable Integer id, @RequestBody ReviewRequest review) {
         return userService.updateReview(id, review);
+    }
+
+    @GetMapping("/watchlist/{username}")
+    public ResponseEntity<List<Production>> getWatchList(@PathVariable String username) {
+        return userService.getWatchList(username);
+    }
+
+    @PostMapping("/add-to-watchlist/{id}")
+    public ResponseEntity<String> addToWatchList(@PathVariable Integer id, HttpServletRequest request) {
+        String token = getToken(request);
+        String username = jwtGenerator.getUsernameFromToken(token);
+        return userService.addToWatchList(id, username);
+    }
+
+    @DeleteMapping("/remove-from-watchlist/{id}")
+    public ResponseEntity<String> removeFromWatchList(@PathVariable Integer id, HttpServletRequest request) {
+        String token = getToken(request);
+        String username = jwtGenerator.getUsernameFromToken(token);
+        return userService.removeFromWatchList(id, username);
     }
 
 

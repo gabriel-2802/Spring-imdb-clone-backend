@@ -1,6 +1,6 @@
 package imdb.app.demo.repos;
 
-import imdb.app.demo.entities.AppUser;
+import imdb.app.demo.entities.users.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

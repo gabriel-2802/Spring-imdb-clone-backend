@@ -3,11 +3,11 @@ package imdb.app.demo.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import imdb.app.demo.entities.entries.Production;
+import imdb.app.demo.entities.users.AppUser;
 import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-//@EntityListeners(ReviewListener.class)
 @Table(name = "reviews")
 @Data
 public class Review {
@@ -51,7 +51,7 @@ public class Review {
         return user != null ? user.getUsername() : "Anonymous";
     }
 
-    @JsonProperty("production")
+    @JsonProperty("productionTitle")
     public String getProductionTitle() {
         return production != null ? production.getTitle() : "Unknown";
     }

@@ -1,8 +1,7 @@
 package imdb.app.demo;
 
-import imdb.app.demo.entities.AppUser;
-import imdb.app.demo.entities.Authority;
-import imdb.app.demo.entities.Role;
+import imdb.app.demo.entities.users.Authority;
+import imdb.app.demo.entities.users.Role;
 import imdb.app.demo.repos.AppUserRepository;
 import imdb.app.demo.repos.RoleRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -10,9 +9,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @SpringBootApplication
 public class DemoApplication {

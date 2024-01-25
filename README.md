@@ -4,6 +4,8 @@
 * a web app which allows user accounts, admin accounts, personalised home pages, and a movie database with ratings and reviews
 * admins can add, edit, and delete movies, as well as delete user accounts
 * the home page is available to all users, including quests
+* users can add, update or delete reviews for movies
+* if they modify their review, the rating of the movie will be updated as well
 
 
 ## Technical Details
@@ -16,5 +18,4 @@
 * a search bar for the movie database
 * a movie recommendation system
 * home page - movie recommendations
-* user - review functionality
 * user - watchlist functionality

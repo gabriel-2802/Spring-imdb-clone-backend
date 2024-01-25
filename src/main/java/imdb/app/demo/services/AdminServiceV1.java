@@ -1,6 +1,6 @@
 package imdb.app.demo.services;
 
-import imdb.app.demo.entities.AppUser;
+import imdb.app.demo.entities.users.AppUser;
 import imdb.app.demo.entities.Review;
 import imdb.app.demo.entities.entries.Movie;
 import imdb.app.demo.entities.entries.Production;

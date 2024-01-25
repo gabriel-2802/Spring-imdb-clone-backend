@@ -15,6 +15,4 @@ public class GeneralAccessController {
     public String home() {
         return "Welcome to Gabriel's IMDB";
     }
-
-    // TODO
 }

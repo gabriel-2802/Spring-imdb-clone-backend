@@ -1,6 +1,5 @@
 package imdb.app.demo.entities.request_response;
 
-import jakarta.persistence.ElementCollection;
 import lombok.Data;
 
 import java.util.List;

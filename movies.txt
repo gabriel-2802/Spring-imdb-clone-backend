@@ -1,0 +1,151 @@
+[
+{
+  "title": "Pulp Fiction",
+  "description": "The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+  "actors": ["John Travolta", "Uma Thurman", "Samuel L. Jackson"],
+  "genres": ["Crime", "Drama"],
+  "directors": ["Quentin Tarantino"],
+  "duration": 154,
+  "releaseYear": 1994
+},
+
+{
+  "title": "Fight Club",
+  "description": "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.",
+  "actors": ["Brad Pitt", "Edward Norton", "Meat Loaf"],
+  "genres": ["Drama"],
+  "directors": ["David Fincher"],
+  "duration": 139,
+  "releaseYear": 1999
+},
+
+{
+  "title": "Forrest Gump",
+  "description": "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75.",
+  "actors": ["Tom Hanks", "Robin Wright", "Gary Sinise"],
+  "genres": ["Drama", "Romance"],
+  "directors": ["Robert Zemeckis"],
+  "duration": 142,
+  "releaseYear": 1994
+},
+
+{
+  "title": "The Matrix",
+  "description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+  "actors": ["Keanu Reeves", "Laurence Fishburne", "Carrie-Anne Moss"],
+  "genres": ["Action", "Sci-Fi"],
+  "directors": ["Lana Wachowski", "Lilly Wachowski"],
+  "duration": 136,
+  "releaseYear": 1999
+},
+
+{
+  "title": "The Lord of the Rings: The Fellowship of the Ring",
+  "description": "A meek Hobbit and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+  "actors": ["Elijah Wood", "Ian McKellen", "Orlando Bloom"],
+  "genres": ["Action", "Adventure", "Drama"],
+  "directors": ["Peter Jackson"],
+  "duration": 178,
+  "releaseYear": 2001
+},
+
+{
+  "title": "Star Wars: Episode V - The Empire Strikes Back",
+  "description": "After the rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda.",
+  "actors": ["Mark Hamill", "Harrison Ford", "Carrie Fisher"],
+  "genres": ["Action", "Adventure", "Fantasy"],
+  "directors": ["Irvin Kershner"],
+  "duration": 124,
+  "releaseYear": 1980
+},
+
+{
+  "title": "Interstellar",
+  "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+  "actors": ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"],
+  "genres": ["Adventure", "Drama", "Sci-Fi"],
+  "directors": ["Christopher Nolan"],
+  "duration": 169,
+  "releaseYear": 2014
+},
+
+{
+  "title": "Schindler's List",
+  "description": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+  "actors": ["Liam Neeson", "Ralph Fiennes", "Ben Kingsley"],
+  "genres": ["Biography", "Drama", "History"],
+  "directors": ["Steven Spielberg"],
+  "duration": 195,
+  "releaseYear": 1993
+},
+
+{
+  "title": "Saving Private Ryan",
+  "description": "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.",
+  "actors": ["Tom Hanks", "Matt Damon", "Tom Sizemore"],
+  "genres": ["Drama", "War"],
+  "directors": ["Steven Spielberg"],
+  "duration": 169,
+  "releaseYear": 1998
+},
+
+{
+  "title": "Gladiator",
+  "description": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+  "actors": ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen"],
+  "genres": ["Action", "Adventure", "Drama"],
+  "directors": ["Ridley Scott"],
+  "duration": 155,
+  "releaseYear": 2000
+},
+
+{
+  "title": "Jurassic Park",
+  "description": "A pragmatic paleontologist visiting an almost complete theme park is tasked with protecting a couple of kids after a power failure causes the park's cloned dinosaurs to run loose.",
+  "actors": ["Sam Neill", "Laura Dern", "Jeff Goldblum"],
+  "genres": ["Action", "Adventure", "Sci-Fi"],
+  "directors": ["Steven Spielberg"],
+  "duration": 127,
+  "releaseYear": 1993
+},
+
+{
+  "title": "The Lion King",
+  "description": "Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.",
+  "actors": ["Matthew Broderick", "Jeremy Irons", "James Earl Jones"],
+  "genres": ["Animation", "Adventure", "Drama"],
+  "directors": ["Roger Allers", "Rob Minkoff"],
+  "duration": 88,
+  "releaseYear": 1994
+},
+
+{
+  "title": "Titanic",
+  "description": "A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.",
+  "actors": ["Leonardo DiCaprio", "Kate Winslet", "Billy Zane"],
+  "genres": ["Drama", "Romance"],
+  "directors": ["James Cameron"],
+  "duration": 195,
+  "releaseYear": 1997
+},
+
+{
+  "title": "Goodfellas",
+  "description": "The story of Henry Hill and his life in the mob, covering his relationship with his wife Karen Hill and his mob partners Jimmy Conway and Tommy DeVito in the Italian-American crime syndicate.",
+  "actors": ["Robert De Niro", "Ray Liotta", "Joe Pesci"],
+  "genres": ["Biography", "Crime", "Drama"],
+  "directors": ["Martin Scorsese"],
+  "duration": 146,
+  "releaseYear": 1990
+},
+
+{
+  "title": "The Silence of the Lambs",
+  "description": "A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer, a madman who skins his victims.",
+  "actors": ["Jodie Foster", "Anthony Hopkins", "Lawrence A. Bonney"],
+  "genres": ["Crime", "Drama", "Thriller"],
+  "directors": ["Jonathan Demme"],
+  "duration": 118,
+  "releaseYear": 1991
+}
+]

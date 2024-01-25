@@ -1,8 +1,10 @@
 package imdb.app.demo.services;
 
-import imdb.app.demo.entities.AppUser;
+import imdb.app.demo.entities.WatchListItem;
+import imdb.app.demo.entities.entries.Production;
+import imdb.app.demo.entities.users.AppUser;
 import imdb.app.demo.entities.Review;
-import imdb.app.demo.entities.ReviewRequest;
+import imdb.app.demo.entities.users.ReviewRequest;
 import imdb.app.demo.entities.entries.Movie;
 import imdb.app.demo.repos.MovieRepository;
 import imdb.app.demo.repos.ReviewRepository;
@@ -109,6 +111,73 @@ public class UserServiceV1 implements UserService {
             return ResponseEntity.ok("Review updated successfully!");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Review not updated!");
+        }
+    }
+
+    @Override
+    public ResponseEntity<List<Production>> getWatchList(String username) {
+        try {
+            AppUser user = userRepository.findByUsername(username);
+            return ResponseEntity.ok(user.getWatchListItems().stream().map(WatchListItem::getProduction).toList());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @Override
+    public ResponseEntity<String> addToWatchList(Integer id, String username) {
+        AppUser user;
+        try {
+            user = userRepository.findByUsername(username);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("User not found!");
+        }
+        Movie movie;
+        try {
+            movie = movieRepository.findById(id).get();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Movie not found!");
+        }
+
+        if (user.getWatchListItems().stream().anyMatch(watchListItem -> watchListItem.getProduction().getId().equals(id))) {
+            return ResponseEntity.badRequest().body("Movie already in watchlist!");
+        }
+
+        WatchListItem watchListItem = new WatchListItem(user, movie);
+        try {
+            user.getWatchListItems().add(watchListItem);
+            userRepository.save(user);
+            return ResponseEntity.ok("Movie added to watchlist!");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Movie not added to watchlist! " + e.getMessage());
+        }
+    }
+
+    @Override
+    public ResponseEntity<String> removeFromWatchList(Integer id, String username) {
+        AppUser user;
+        try {
+            user = userRepository.findByUsername(username);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("User not found!");
+        }
+        Movie movie;
+        try {
+            movie = movieRepository.findById(id).get();
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Movie not found!");
+        }
+
+        if (user.getWatchListItems().stream().noneMatch(watchListItem -> watchListItem.getProduction().getId().equals(id))) {
+            return ResponseEntity.badRequest().body("Movie not in watchlist!");
+        }
+
+        try {
+            user.getWatchListItems().removeIf(watchListItem -> watchListItem.getProduction().getId().equals(id));
+            userRepository.save(user);
+            return ResponseEntity.ok("Movie removed from watchlist!");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Movie not removed from watchlist! " + e.getMessage());
         }
     }
 }

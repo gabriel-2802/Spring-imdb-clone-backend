@@ -1,6 +1,6 @@
 package imdb.app.demo.controllers;
 
-import imdb.app.demo.entities.AppUser;
+import imdb.app.demo.entities.users.AppUser;
 import imdb.app.demo.entities.entries.Production;
 import imdb.app.demo.entities.request_response.MovieRequest;
 import imdb.app.demo.services.interfaces.AdminService;
@@ -41,6 +41,14 @@ public class AdminController {
     @PutMapping("/update-movie/{id}")
     public ResponseEntity<String> updateMovie(@PathVariable Integer id, @RequestBody MovieRequest production) {
         return adminService.updateMovie(id, production);
+    }
+
+    @PostMapping("add-movies")
+    public ResponseEntity<String> addMovies(@RequestBody List<MovieRequest> movies) {
+        for (MovieRequest movie : movies) {
+            adminService.addMovie(movie);
+        }
+        return ResponseEntity.ok("Movies added successfully");
     }
 
 }
