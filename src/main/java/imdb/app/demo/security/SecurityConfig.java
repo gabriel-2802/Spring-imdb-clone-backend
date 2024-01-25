@@ -35,8 +35,7 @@ public class SecurityConfig {
                         .requestMatchers("/imdb/auth/**").permitAll()
                         .requestMatchers("/imdb/admin/**").hasAuthority("ADMIN") // Only ADMIN can access /imdb/admin/**
                         .requestMatchers("/imdb/users/**").hasAuthority("USER") // Only USER can access /imdb/users/**
-                        .requestMatchers(HttpMethod.GET, "/imdb/content/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/imdb/content/**").hasAuthority("USER") // Only USER can access /imdb/content/**
+                        .requestMatchers(HttpMethod.GET, "/imdb/home/**").permitAll()
                         .anyRequest().authenticated())
                 .httpBasic(withDefaults())
                 .exceptionHandling(exceptionHandling ->

@@ -24,4 +24,6 @@ public interface UserService {
     ResponseEntity<String> addToWatchList(Integer id, String username);
 
     ResponseEntity<String> removeFromWatchList(Integer id, String username);
+
+    ResponseEntity<List<List<Production>>> viewHome(String username);
 }

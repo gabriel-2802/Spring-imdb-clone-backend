@@ -6,6 +6,8 @@
 * the home page is available to all users, including quests
 * users can add, update or delete reviews for movies
 * if they modify their review, the rating of the movie will be updated as well
+* users can also add movies to their watchlist
+* if the movie is deleted from the database, it will be removed from the watchlist as well
 
 
 ## Technical Details
@@ -18,4 +20,3 @@
 * a search bar for the movie database
 * a movie recommendation system
 * home page - movie recommendations
-* user - watchlist functionality

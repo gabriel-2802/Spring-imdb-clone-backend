@@ -7,6 +7,7 @@ import imdb.app.demo.entities.Review;
 import imdb.app.demo.entities.users.ReviewRequest;
 import imdb.app.demo.entities.entries.Movie;
 import imdb.app.demo.repos.MovieRepository;
+import imdb.app.demo.repos.ProductionRepository;
 import imdb.app.demo.repos.ReviewRepository;
 import imdb.app.demo.repos.UserRepository;
 import imdb.app.demo.services.interfaces.ProductionService;
@@ -25,6 +26,8 @@ public class UserServiceV1 implements UserService {
     private final MovieRepository movieRepository;
     private final ReviewRepository reviewRepository;
     private final ProductionService productionService;
+    private final ProductionRepository productionRepository;
+    public static final int MAX_RESULTS = 5;
 
     @Override
     public ResponseEntity<AppUser> loginInfo(String username) {
@@ -178,6 +181,29 @@ public class UserServiceV1 implements UserService {
             return ResponseEntity.ok("Movie removed from watchlist!");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Movie not removed from watchlist! " + e.getMessage());
+        }
+    }
+
+    @Override
+    public ResponseEntity<List<List<Production>>> viewHome(String username) {
+        try {
+
+            List<Production> topRatedMovies = productionRepository.findTopRated().stream()
+                    .limit(MAX_RESULTS).toList();
+            List<Production> watchList = getWatchList(username).getBody() ==
+                    null ? List.of() : getWatchList(username).getBody();
+            List<Production> randomList = productionRepository.findRandom().stream()
+                    .limit(MAX_RESULTS).toList();
+            List<Production> latestProductions = productionRepository.findLatest().stream()
+                    .limit(MAX_RESULTS).toList();
+
+
+            assert watchList != null;
+            List<List<Production>> home = List.of(topRatedMovies,watchList, latestProductions, randomList);
+            return ResponseEntity.ok(home);
+
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
         }
     }
 }

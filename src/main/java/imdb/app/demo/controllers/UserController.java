@@ -37,11 +37,6 @@ public class UserController {
 
     }
 
-    @GetMapping("/home")
-    public String home() {
-        return "Welcome to your HomePage!";
-    }
-
     @PostMapping("add-movie-review/{id}")
     public ResponseEntity<String> addMovieReview(@PathVariable Integer id, @RequestBody ReviewRequest review, HttpServletRequest request) {
         String token = getToken(request);
@@ -83,6 +78,14 @@ public class UserController {
         String token = getToken(request);
         String username = jwtGenerator.getUsernameFromToken(token);
         return userService.removeFromWatchList(id, username);
+    }
+
+    @GetMapping("/home")
+    public ResponseEntity<List<List<Production>>> home(HttpServletRequest request) {
+        String token = getToken(request);
+        String username = jwtGenerator.getUsernameFromToken(token);
+        return userService.viewHome(username);
+
     }
 
 
