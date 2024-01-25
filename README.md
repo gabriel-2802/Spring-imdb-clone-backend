@@ -8,13 +8,11 @@
 * if they modify their review, the rating of the movie will be updated as well
 * users can also add movies to their watchlist
 * if the movie is deleted from the database, it will be removed from the watchlist as well
+* basic search functionality is available for all users, including quests
 
 
 ## Technical Details
 * ```Spring Boot``` application with ```POSTGRESQL``` database
 * ```Spring Security``` and ```JWT``` for user authentication and authorisation
 * ```Spring Data JPA``` for database access
-* ```Spring MVC``` for RESTful API
-
-## To Be Added
-* a search bar for the movie database
+* ```Spring MVC``` for REST API
