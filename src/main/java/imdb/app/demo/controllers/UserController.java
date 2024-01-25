@@ -59,5 +59,10 @@ public class UserController {
         return userService.getReviews(username);
     }
 
+    @PutMapping("/update-review/{id}")
+    public ResponseEntity<String> updateReview(@PathVariable Integer id, @RequestBody ReviewRequest review) {
+        return userService.updateReview(id, review);
+    }
+
 
 }

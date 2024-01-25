@@ -15,4 +15,6 @@ public interface UserService {
     ResponseEntity<String> deleteReview(Integer id);
 
     ResponseEntity<List<Review>> getReviews(String username);
+
+    ResponseEntity<String> updateReview(Integer id, ReviewRequest review);
 }

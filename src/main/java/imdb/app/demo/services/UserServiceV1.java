@@ -5,17 +5,13 @@ import imdb.app.demo.entities.Review;
 import imdb.app.demo.entities.ReviewRequest;
 import imdb.app.demo.entities.entries.Movie;
 import imdb.app.demo.repos.MovieRepository;
-import imdb.app.demo.repos.ProductionRepository;
 import imdb.app.demo.repos.ReviewRepository;
 import imdb.app.demo.repos.UserRepository;
-import imdb.app.demo.security.JwtGenerator;
 import imdb.app.demo.services.interfaces.ProductionService;
 import imdb.app.demo.services.interfaces.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +20,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserServiceV1 implements UserService {
     private final UserRepository userRepository;
-    private final ProductionRepository productionRepository;
     private final MovieRepository movieRepository;
     private final ReviewRepository reviewRepository;
     private final ProductionService productionService;
@@ -58,6 +53,7 @@ public class UserServiceV1 implements UserService {
 
         try {
             reviewRepository.save(newReview);
+            productionService.updateProductionRating(movieId);
             return ResponseEntity.ok("Review added successfully!");
         }
         catch (Exception e) {
@@ -95,5 +91,24 @@ public class UserServiceV1 implements UserService {
        }
     }
 
+    @Override
+    public ResponseEntity<String> updateReview(Integer id, ReviewRequest review) {
+        Optional<Review> reviewEntry = reviewRepository.findById(id);
+        if (reviewEntry.isEmpty()) {
+            return ResponseEntity.badRequest().body("Review not found!");
+        }
 
+        Review existingReview = reviewEntry.get();
+        existingReview.setTitle(review.getTitle());
+        existingReview.setContent(review.getContent());
+        existingReview.setRating(review.getRating());
+
+        try {
+            reviewRepository.save(existingReview);
+            productionService.updateProductionRating(existingReview.getProdId());
+            return ResponseEntity.ok("Review updated successfully!");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Review not updated!");
+        }
+    }
 }

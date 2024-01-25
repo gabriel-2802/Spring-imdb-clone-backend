@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@EntityListeners(ReviewListener.class)
+//@EntityListeners(ReviewListener.class)
 @Table(name = "reviews")
 @Data
 public class Review {
