@@ -13,7 +13,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("imdb/admin")
-@PreAuthorize("hasAuthority('ADMIN')")
 @RequiredArgsConstructor
 public class AdminController {
     private final AdminService adminService;
